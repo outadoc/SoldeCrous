@@ -48,7 +48,9 @@ def getInformationPage(username, password):
         'newPasswordConf': ''
     }
 
-    login = requests.post(MONETIQUE_BASE_URL + '/CrousVAD/getInformation', data=payload, verify=False)
+    login = requests.post(MONETIQUE_BASE_URL + '/CrousVAD/getInformation',
+        data=payload, verify=False)
+
     return login.text.encode('utf8')
 
 
@@ -74,8 +76,11 @@ def main():
         print("Attention, solde inférieur à {:.2f}€ !".format(BALANCE_THRESHOLD))
 
         # On créé un client Pushover (pour envoyer une alerte)
-        pushover_client = pushover.Client(PUSHOVER_USER_KEY, api_token=PUSHOVER_TOKEN)
-        pushover_client.send_message("Attention, le solde est de {:.2f}€ !".format(balance), title="Solde Léocarte")
+        pushover_client = pushover.Client(PUSHOVER_USER_KEY, 
+            api_token=PUSHOVER_TOKEN)
+
+        pushover_client.send_message("Attention, le solde est de {:.2f}€ !"
+            .format(balance), title="Solde Léocarte")
     else:
         # Tout va bien ici
         print("Solde OK !")
