@@ -3,6 +3,11 @@
 Juste un petit script en Python qui vérifie le solde de votre compte CROUS et 
 vous envoie une notification Pushover si le solde est trop faible.
 
+# Configuration
+
+Ouvrez solde_crous.py et remplacez la valeur des variables par les valeurs
+adaptées.
+
 # Licence
 
 	This program is free software: you can redistribute it and/or modify
