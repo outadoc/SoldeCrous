@@ -8,6 +8,19 @@ vous envoie une notification Pushover si le solde est trop faible.
 Ouvrez solde_crous.py et remplacez la valeur des variables par les valeurs
 adaptées.
 
+# Installation
+
+Déposez le .py quelque-part.  
+
+Installez les dépendences :
+
+	sudo pip install requests
+	sudo pip install python-pushover
+
+Lancez le script :
+
+	python solde_crous.py
+
 # Licence
 
 	This program is free software: you can redistribute it and/or modify
