@@ -16,7 +16,7 @@
 
 import requests
 import re
-import pushover
+from pushbullet import Pushbullet
 
 # Nom d'utilisateur/mot de passe pour le compte CROUS
 CROUS_USERNAME = '12345678'
@@ -28,9 +28,8 @@ BALANCE_THRESHOLD = 3.20
 # URL de base du site de monétique du CROUS
 MONETIQUE_BASE_URL = 'https://monetique-caen.crous-caen.fr'
 
-# Clés du compte/app Pushover, pour envoyer le message
-PUSHOVER_TOKEN = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-PUSHOVER_USER_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+# Clé du compte Pushbullet, pour envoyer le message
+PUSHBULLET_TOKEN = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 
 def getInformationPage(username, password):
@@ -75,12 +74,12 @@ def main():
     if balance < BALANCE_THRESHOLD:
         print("Attention, solde inférieur à {:.2f}€ !".format(BALANCE_THRESHOLD))
 
-        # On créé un client Pushover (pour envoyer une alerte)
-        pushover_client = pushover.Client(PUSHOVER_USER_KEY, 
-            api_token=PUSHOVER_TOKEN)
+        # On créé un client Pushbullet (pour envoyer une alerte)
+        pb = Pushbullet(PUSHBULLET_TOKEN)
 
-        pushover_client.send_message("Attention, le solde est de {:.2f}€ !"
-            .format(balance), title="Solde Léocarte")
+        pb.push_link("Solde Léocarte critique", 
+            MONETIQUE_BASE_URL + "/CrousVAD/ihm/authentication.jsp",
+            "Attention, le solde est de {:.2f}€ !".format(balance))
     else:
         # Tout va bien ici
         print("Solde OK !")

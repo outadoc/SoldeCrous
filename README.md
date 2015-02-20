@@ -1,21 +1,22 @@
 # Solde CROUS
 
 Juste un petit script en Python qui vérifie le solde de votre compte CROUS et 
-vous envoie une notification Pushover si le solde est trop faible.
+vous envoie une notification Pushbullet si le solde est trop faible.
 
 # Configuration
 
 Ouvrez solde_crous.py et remplacez la valeur des variables par les valeurs
-adaptées.
+adaptées. Vous devrez créer un compte Pushbullet si nécessaire, et récupérer
+votre access token sur https://www.pushbullet.com/account.
 
 # Installation
 
 Déposez le .py quelque-part.  
 
-Installez les dépendences :
+Installez les dépendences en root :
 
-	sudo pip install requests
-	sudo pip install python-pushover
+	pip install requests
+	pip install pushbullet.py
 
 Lancez le script :
 
